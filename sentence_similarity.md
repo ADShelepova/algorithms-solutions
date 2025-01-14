@@ -10,3 +10,20 @@ However, similarity is symmetric. For example, "great" and "fine" being similar 
 Also, a word is always similar with itself. For example, the sentences <code>words1 = [&quot;great&quot;], words2 = [&quot;great&quot;], pairs = []</code> are similar, even though there are no specified similar word pairs.
 
 Finally, sentences can only be similar if they have the same number of words. So a sentence like <code>words1 = [&quot;great&quot;]</code> can never be similar to <code>words2 = [&quot;doubleplus&quot;,&quot;good&quot;]</code>.
+
+## Solution ideas
+
+## Solution 
+```python
+def sentence_similarity(words1, words2, pairs):
+  if len(words1)!=len(words2):
+    return False
+  for word1, word2 in zip(words1, words2):
+    flag=0
+    for pair in pairs:
+      if (word1 in pair) and (word2 in pair):
+        flag=1
+    if flag == 0:
+      return False
+  return True
+```
