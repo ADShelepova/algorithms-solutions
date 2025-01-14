@@ -19,6 +19,8 @@ def sentence_similarity(words1, words2, pairs):
   if len(words1)!=len(words2):
     return False
   for word1, word2 in zip(words1, words2):
+    if word1 == word2:
+      continue
     flag=0
     for pair in pairs:
       if (word1 in pair) and (word2 in pair):
