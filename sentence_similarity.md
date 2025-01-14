@@ -13,7 +13,8 @@ Finally, sentences can only be similar if they have the same number of words. So
 
 ## Solution ideas
 
-## Solution 
+## Solutions
+### Solution 1 (two cycles)
 ```python
 def sentence_similarity(words1, words2, pairs):
   if len(words1)!=len(words2):
@@ -28,4 +29,13 @@ def sentence_similarity(words1, words2, pairs):
     if flag == 0:
       return False
   return True
+```
+### Solution 2 (set)
+```python
+def sentence_similarity(words1, words2, pairs):
+  if len(words1)!=len(words2):
+    return False
+  set_similar_pairs = set((pair[0], pair[1]) for pair in pairs)
+  res = all((word1==word2) or ((word1, word2) in set_similar_pairs) or ((word2, word1) in set_similar_pairs) for word1, word2 in zip(words1, words2))
+  return res
 ```
